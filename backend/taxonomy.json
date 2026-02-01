@@ -1,0 +1,157 @@
+{
+  "SpendTaxonomy": {
+    "Direct": {
+      "Goods": {
+        "Raw Materials": [
+          "Steel",
+          "Plastic Resin",
+          "Chemicals",
+          "Textiles",
+          "Aluminum",
+          "Copper",
+          "Glass",
+          "Timber"
+        ],
+        "Components": [
+          "Machined Parts",
+          "Electronic Boards",
+          "Fasteners",
+          "Sensors",
+          "Connectors",
+          "Integrated Circuits"
+        ],
+        "Finished Goods": [
+          "Resale Consumer Products",
+          "Retail Inventory",
+          "Packaging Labels"
+        ]
+      },
+      "Services": {
+        "Production Services": [
+          "Contract Manufacturing",
+          "Assembly Services",
+          "Quality Inspection"
+        ],
+        "Logistics Services": [
+          "Freight Inbound",
+          "Import Handling",
+          "Customs Brokerage"
+        ]
+      },
+      "Capital Expenditure": {
+        "Plant & Machinery": [
+          "Manufacturing Equipment",
+          "Heavy Machinery",
+          "Conveyor Systems"
+        ],
+        "Production Lines": [
+          "Automated Line Installations",
+          "Testing Fixtures"
+        ],
+        "Infrastructure": [
+          "Warehouse Construction",
+          "Electrical Substation"
+        ]
+      }
+    },
+    "Indirect": {
+      "Goods": {
+        "IT Hardware": [
+          "Laptops",
+          "Servers",
+          "Monitors",
+          "Network Devices",
+          "Storage Arrays",
+          "Peripherals"
+        ],
+        "Office Supplies": [
+          "Stationery",
+          "Chair/Furniture",
+          "Kitchen & Pantry Supplies",
+          "Printers & Scanners"
+        ],
+        "Facilities Supplies": [
+          "Cleaning Supplies",
+          "Safety Equipment",
+          "Plumbing Spares",
+          "Lighting Fixtures"
+        ],
+        "MRO Goods": [
+          "Bearings",
+          "Replacement Parts",
+          "Lubricants",
+          "Pneumatic Tools"
+        ]
+      },
+      "Services": {
+        "IT Services": [
+          "SaaS Subscriptions",
+          "Managed Services",
+          "License Renewals",
+          "Cloud Computing (AWS/GCP/Azure)",
+          "Cybersecurity Services"
+        ],
+        "Professional Services": [
+          "Consulting",
+          "Audit",
+          "Legal Advisory",
+          "Tax Services",
+          "Strategy Consulting"
+        ],
+        "Facilities Services": [
+          "Cleaning Services",
+          "Security Services",
+          "Building Maintenance",
+          "Landscaping",
+          "Waste Management"
+        ],
+        "Marketing Services": [
+          "Advertising",
+          "Digital Campaigns",
+          "Brand Consultants",
+          "Event Planning"
+        ],
+        "Logistics Services": [
+          "Freight Outbound",
+          "Courier Services",
+          "Third-Party Logistics (3PL)"
+        ],
+        "Travel & Entertainment": [
+          "Air Travel",
+          "Hotel",
+          "Meals",
+          "Ground Transportation (Uber/Taxis)"
+        ],
+        "HR & Workforce Services": [
+          "Recruitment Fees",
+          "Contract Labor",
+          "Training & Development",
+          "Employee Benefits"
+        ]
+      }
+    },
+    "Non-Procureable": {
+      "Taxes": [
+        "Sales Tax",
+        "Import Duty",
+        "Withholding Tax",
+        "Property Tax"
+      ],
+      "Penalties & Fines": [
+        "Regulatory Fines",
+        "Late Payment Penalties",
+        "Legal Settlements"
+      ],
+      "Internal Transfers": [
+        "Intercompany Allocations",
+        "Rebates",
+        "Accounting Adjustments"
+      ],
+      "Financial Charges": [
+        "Interest Expense",
+        "Bank Fees",
+        "Credit Card Processing Fees"
+      ]
+    }
+  }
+}
