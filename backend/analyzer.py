@@ -5,7 +5,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY"),
+    base_url=os.getenv("OPENAI_BASE_URL")
+)
 
 with open("taxonomy.json", "r") as f:
     TAXONOMY = json.load(f)
@@ -39,13 +42,23 @@ Output in JSON format:
 def analyze_spend(supplier, material, description, amount):
     user_input = f"Supplier: {supplier}, Material: {material}, Description: {description}, Amount: {amount}"
     
-    response = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_input}
-        ],
-        response_format={"type": "json_object"}
-    )
-    
-    return json.loads(response.choices[0].message.content)
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_input}
+            ],
+            response_format={"type": "json_object"}
+        )
+        return json.loads(response.choices[0].message.content)
+    except Exception as e:
+        print(f"Error calling OpenAI: {str(e)}")
+        # Return a "fallback" object so the UI doesn't crash
+        return {
+            "level1": "Error",
+            "level2": "API Failure",
+            "level3": "Check Logs",
+            "reasoning": f"Critical Error: {str(e)}. This often happens with API Gateways if the Base URL or API Key is incorrect, or if the Gateway requires specific headers.",
+            "confidence": "None"
+        }
