@@ -21,16 +21,18 @@ For each input record, you must provide:
 1. High-level category (Level 1)
 2. Mid-level category (Level 2)
 3. Specific category (Level 3 or Value)
-4. Chain of Thought (Reasoning): Explain why you chose this category, especially if there are ambiguities. 
-
-Focus on the Chain of Thought. If a supplier name or material is ambiguous (e.g., 'Apple' could be electronics or fruit), use the description and context to decide.
+4. Chain of Thought (Reasoning): Explain why you chose this category. 
+   - CRITICAL: If the case is ambiguous or if there's a reason you might be wrong, state it clearly. 
+   - Highlight conflicting keywords (e.g., if the supplier suggests one thing but the description suggests another).
+5. Confidence Level: High, Medium, or Low.
 
 Output in JSON format:
 {{
   "level1": "...",
   "level2": "...",
   "level3": "...",
-  "reasoning": "..."
+  "reasoning": "...",
+  "confidence": "..."
 }}
 """
 
@@ -38,7 +40,7 @@ def analyze_spend(supplier, material, description, amount):
     user_input = f"Supplier: {supplier}, Material: {material}, Description: {description}, Amount: {amount}"
     
     response = client.chat.completions.create(
-        model="gpt-4o", # Using gpt-4o for better CoT
+        model="gpt-4o",
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_input}
