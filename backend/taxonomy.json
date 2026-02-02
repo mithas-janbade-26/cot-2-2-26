@@ -3,154 +3,137 @@
     "Direct": {
       "Goods": {
         "Raw Materials": [
-          "Steel",
-          "Plastic Resin",
-          "Chemicals",
-          "Textiles",
-          "Aluminum",
-          "Copper",
-          "Glass",
-          "Timber"
+          "Metals",
+          "Polymers & Elastomers",
+          "Chemicals & Compounds",
+          "Textiles & Fibers",
+          "Natural Materials"
         ],
-        "Components": [
-          "Machined Parts",
-          "Electronic Boards",
-          "Fasteners",
-          "Sensors",
-          "Connectors",
-          "Integrated Circuits"
+        "Components & Subassemblies": [
+          "Mechanical Components",
+          "Electrical Components",
+          "Electronic Components",
+          "Standard Hardware",
+          "Custom Fabricated Parts"
         ],
         "Finished Goods": [
-          "Resale Consumer Products",
-          "Retail Inventory",
-          "Packaging Labels"
+          "Resale Products",
+          "Private Label Products",
+          "Packaging & Labelling"
         ]
       },
       "Services": {
-        "Production Services": [
+        "Manufacturing Services": [
           "Contract Manufacturing",
-          "Assembly Services",
-          "Quality Inspection"
+          "Assembly & Integration",
+          "Testing & Inspection"
         ],
-        "Logistics Services": [
-          "Freight Inbound",
-          "Import Handling",
-          "Customs Brokerage"
+        "Supply Chain Services": [
+          "Inbound Logistics",
+          "Customs & Trade Compliance",
+          "Warehousing Services"
         ]
       },
       "Capital Expenditure": {
-        "Plant & Machinery": [
+        "Production Assets": [
           "Manufacturing Equipment",
-          "Heavy Machinery",
-          "Conveyor Systems"
+          "Process Machinery",
+          "Tooling & Fixtures"
         ],
-        "Production Lines": [
-          "Automated Line Installations",
-          "Testing Fixtures"
-        ],
-        "Infrastructure": [
-          "Warehouse Construction",
-          "Electrical Substation"
+        "Industrial Infrastructure": [
+          "Plant Construction",
+          "Utility Systems",
+          "Material Handling Systems"
         ]
       }
     },
     "Indirect": {
       "Goods": {
-        "IT Hardware": [
-          "Laptops",
-          "Servers",
-          "Monitors",
-          "Network Devices",
-          "Storage Arrays",
-          "Peripherals"
+        "IT & Technology Hardware": [
+          "End-User Devices",
+          "Data Center Equipment",
+          "Network Infrastructure"
         ],
-        "Office Supplies": [
-          "Stationery",
-          "Chair/Furniture",
-          "Kitchen & Pantry Supplies",
-          "Printers & Scanners"
+        "Office & Workplace Supplies": [
+          "Office Consumables",
+          "Furniture & Fixtures",
+          "Printing & Imaging Equipment"
         ],
-        "Facilities Supplies": [
-          "Cleaning Supplies",
-          "Safety Equipment",
-          "Plumbing Spares",
-          "Lighting Fixtures"
+        "Facilities & Utilities Supplies": [
+          "Maintenance Supplies",
+          "Safety & Compliance Equipment",
+          "Electrical & Lighting Supplies"
         ],
         "MRO Goods": [
-          "Bearings",
-          "Replacement Parts",
-          "Lubricants",
-          "Pneumatic Tools"
+          "Mechanical Spares",
+          "Electrical Spares",
+          "Tools & Instruments",
+          "Lubricants & Consumables"
         ]
       },
       "Services": {
-        "IT Services": [
-          "SaaS Subscriptions",
-          "Managed Services",
-          "License Renewals",
-          "Cloud Computing (AWS/GCP/Azure)",
+        "IT & Digital Services": [
+          "Software & SaaS",
+          "Cloud & Infrastructure Services",
+          "IT Operations & Support",
           "Cybersecurity Services"
         ],
-        "Professional Services": [
-          "Consulting",
-          "Audit",
-          "Legal Advisory",
-          "Tax Services",
-          "Strategy Consulting"
+        "Professional & Advisory Services": [
+          "Management Consulting",
+          "Legal Services",
+          "Audit & Assurance",
+          "Tax & Regulatory Advisory"
         ],
-        "Facilities Services": [
-          "Cleaning Services",
+        "Facilities Management Services": [
+          "Cleaning & Janitorial",
           "Security Services",
-          "Building Maintenance",
-          "Landscaping",
-          "Waste Management"
+          "Technical Maintenance",
+          "Environmental Services"
         ],
-        "Marketing Services": [
-          "Advertising",
-          "Digital Campaigns",
-          "Brand Consultants",
-          "Event Planning"
+        "Sales & Marketing Services": [
+          "Advertising & Media",
+          "Branding & Creative Services",
+          "Market Research",
+          "Events & Promotions"
         ],
-        "Logistics Services": [
-          "Freight Outbound",
-          "Courier Services",
-          "Third-Party Logistics (3PL)"
+        "Logistics & Distribution Services": [
+          "Outbound Transportation",
+          "Courier & Express Services",
+          "Third-Party Logistics"
         ],
-        "Travel & Entertainment": [
-          "Air Travel",
-          "Hotel",
-          "Meals",
-          "Ground Transportation (Uber/Taxis)"
+        "Travel & Employee Services": [
+          "Business Travel",
+          "Accommodation",
+          "Employee Welfare Services"
         ],
         "HR & Workforce Services": [
-          "Recruitment Fees",
-          "Contract Labor",
-          "Training & Development",
-          "Employee Benefits"
+          "Talent Acquisition",
+          "Temporary & Contract Labor",
+          "Learning & Development",
+          "Payroll & HR Operations"
         ]
       }
     },
     "Non-Procureable": {
-      "Taxes": [
-        "Sales Tax",
-        "Import Duty",
-        "Withholding Tax",
-        "Property Tax"
+      "Statutory & Government Charges": [
+        "Direct Taxes",
+        "Indirect Taxes",
+        "Customs & Duties"
       ],
-      "Penalties & Fines": [
-        "Regulatory Fines",
-        "Late Payment Penalties",
-        "Legal Settlements"
+      "Financial & Treasury Costs": [
+        "Interest & Financing Costs",
+        "Banking & Transaction Fees",
+        "Foreign Exchange Costs"
       ],
-      "Internal Transfers": [
+      "Penalties & Exceptional Items": [
+        "Regulatory Penalties",
+        "Legal Settlements",
+        "One-time Exceptional Charges"
+      ],
+      "Internal & Accounting Adjustments": [
         "Intercompany Allocations",
-        "Rebates",
-        "Accounting Adjustments"
-      ],
-      "Financial Charges": [
-        "Interest Expense",
-        "Bank Fees",
-        "Credit Card Processing Fees"
+        "Provisions & Accruals",
+        "Accounting Reclassifications"
       ]
     }
   }

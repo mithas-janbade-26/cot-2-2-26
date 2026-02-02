@@ -36,77 +36,81 @@ function App() {
   return (
     <div className="container">
       <header>
-        <h1>SpendAnalyzer <span style={{ fontSize: '1rem', fontWeight: 400, opacity: 0.7 }}>with CoT Visibility</span></h1>
-        <p style={{ color: 'var(--text-muted)' }}>Upload your invoice data and see the AI's logic behind every categorization.</p>
+        <div>
+          <h1>SpendAnalyzer <span style={{ fontWeight: 300, fontSize: '0.9rem', color: 'var(--text-light)', marginLeft: '10px' }}>v2.0 Professional</span></h1>
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>Enterprise Spend Categorization with Human-in-the-Loop AI Logic</p>
+        </div>
+        <div className="upload-section" style={{ margin: 0, padding: '0.5rem 1rem' }}>
+          <div className="file-input-wrapper">
+            <button className="btn-primary" style={{ fontSize: '0.8rem' }}>
+              {fileName ? fileName : "Upload Excel"}
+            </button>
+            <input type="file" accept=".xlsx, .xls" onChange={handleFileUpload} style={{ position: 'absolute', opacity: 0, left: 0, top: 0, width: '100%' }} />
+          </div>
+          {loading && <span className="loading-inline" style={{ marginLeft: '1rem' }}>Processing...</span>}
+        </div>
       </header>
 
-      <div className="upload-section">
-        <div className="file-input-wrapper">
-          <button className="btn-primary">
-            {fileName ? `Selected: ${fileName}` : "Upload Excel Sheet"}
-          </button>
-          <input type="file" accept=".xlsx, .xls" onChange={handleFileUpload} />
-        </div>
-        {loading && <div className="loading-spinner"></div>}
-      </div>
-
-      <div className="results-grid">
-        {results.map((item, index) => (
-          <div key={index} className="result-card" style={{ animationDelay: `${index * 0.1}s` }}>
-            <div className="result-header">
-              <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', gap: '2rem', marginBottom: '0.5rem' }}>
-                  <div>
-                    <span className="cot-title" style={{ marginBottom: '0' }}>Supplier</span>
-                    <div className="supplier-name">{item.original.Supplier}</div>
+      <table className="results-table">
+        <thead>
+          <tr>
+            <th style={{ width: '15%' }}>Supplier</th>
+            <th style={{ width: '20%' }}>Material / Description</th>
+            <th style={{ width: '25%' }}>Primary Category</th>
+            <th style={{ width: '25%' }}>Alternatives / Validation</th>
+            <th style={{ width: '10%' }}>Confidence</th>
+            <th style={{ width: '5%' }}>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {results.map((item, index) => (
+            <tr key={index}>
+              <td className="supplier-cell">{item.original.Supplier}</td>
+              <td>
+                <strong>{item.original.Material}</strong>
+                <span className="description-text">{item.original.Description}</span>
+              </td>
+              <td>
+                <span className="category-tag">{item.analysis.primary?.level1}</span>
+                <span className="category-tag">{item.analysis.primary?.level2}</span>
+                <div style={{ marginTop: '0.4rem', fontWeight: 600, color: 'var(--primary)' }}>
+                  → {item.analysis.primary?.level3} {item.analysis.primary?.level4 ? `/ ${item.analysis.primary.level4}` : ''}
+                </div>
+              </td>
+              <td>
+                {item.analysis.alternative ? (
+                  <div className="alt-category">
+                    <span style={{ color: 'var(--text-dark)', fontWeight: 600 }}>Maybe: </span>
+                    {item.analysis.alternative.level3} {item.analysis.alternative.level4 ? `/ ${item.analysis.alternative.level4}` : ''}
+                    <p style={{ fontSize: '0.7rem', marginTop: '2px' }}>{item.analysis.alternative.reason}</p>
                   </div>
-                  <div>
-                    <span className="cot-title" style={{ marginBottom: '0' }}>Material</span>
-                    <div style={{ fontWeight: 600 }}>{item.original.Material}</div>
+                ) : (
+                  <span style={{ color: 'var(--text-light)', fontStyle: 'italic', fontSize: '0.8rem' }}>No plausible alternatives found.</span>
+                )}
+              </td>
+              <td>
+                <div className="tooltip-container">
+                  <span className={`confidence-dot confidence-${item.analysis.confidence}`}></span>
+                  <strong>{item.analysis.confidence}</strong>
+                  <div className="tooltip-text">
+                    <div style={{ fontSize: '0.7rem', color: '#aaa', marginBottom: '5px', textTransform: 'uppercase' }}>AI Reasoning (Linger to view)</div>
+                    {item.analysis.reasoning}
                   </div>
                 </div>
-                <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
-                  <span className="cot-title" style={{ display: 'inline', marginRight: '0.5rem' }}>Description:</span>
-                  {item.original.Description}
-                </div>
-              </div>
-              <div className="amount" style={{ textAlign: 'right' }}>
-                <span className="cot-title" style={{ display: 'block', marginBottom: '0.25rem' }}>Amount</span>
+              </td>
+              <td style={{ textAlign: 'right', fontWeight: 600 }}>
                 ${item.original.Amount?.toLocaleString()}
-              </div>
-            </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div>
-                <span className="category-badge">{item.analysis.level1}</span>
-                <span className="category-badge">{item.analysis.level2}</span>
-                <span className="category-badge" style={{ background: 'rgba(34, 211, 238, 0.2)', color: 'var(--accent)' }}>{item.analysis.level3}</span>
-              </div>
-              <div style={{
-                color: item.analysis.confidence === 'High' ? 'var(--success)' : (item.analysis.confidence === 'Medium' ? '#fbbf24' : '#f87171'),
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                textTransform: 'uppercase'
-              }}>
-                Confidence: {item.analysis.confidence}
-              </div>
-            </div>
-
-            <div className="cot-section">
-              <div className="cot-title">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-                Chain of Thought Reasoning
-              </div>
-              <div className="cot-content">
-                {item.analysis.reasoning}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      {results.length === 0 && !loading && (
+        <div style={{ textAlign: 'center', padding: '10rem', color: 'var(--text-light)' }}>
+          <p>No data processed. Please upload an excel sheet to begin analysis.</p>
+        </div>
+      )}
     </div>
   );
 }
